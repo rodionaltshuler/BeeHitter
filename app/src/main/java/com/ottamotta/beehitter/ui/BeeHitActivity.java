@@ -41,7 +41,8 @@ public class BeeHitActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             try {
-                Bee bee = swarm.hitRandomBee();
+                Bee bee = swarm.getRandomBee();
+                swarm.hit(bee);
                 adapter.updateBee(bee);
                 if (bee.isDead()) {
                     adapter.remove(bee);

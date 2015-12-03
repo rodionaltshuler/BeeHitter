@@ -46,4 +46,8 @@ public abstract class Bee {
     public int hashCode() {
         return id;
     }
+
+    int getId() {
+        return id;
+    }
 }

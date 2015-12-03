@@ -59,7 +59,7 @@ public class Swarm {
         createBees();
     }
 
-    private List<Bee> createBees() {
+    List<Bee> createBees() {
         int counter = 0;
         for (BeeType beeType : BeeType.values()) {
             for (int i = 0; i < beeType.count; i++) {
@@ -69,17 +69,27 @@ public class Swarm {
         return bees;
     }
 
-    public Bee hitRandomBee() throws SwarmDeadException {
+    Bee getQueen() {
+        for (Bee bee : bees) {
+            if (bee instanceof QueenBee) return bee;
+        }
+        return null;
+    }
+
+    public Bee getRandomBee() {
         Random r = new Random();
         int beeIndex = r.nextInt(bees.size());
-        Bee bee = bees.get(beeIndex);
+        return  bees.get(beeIndex);
+    }
+
+    public Bee hit(Bee bee) throws SwarmDeadException {
         bee.hit();
         if (bee.isDead()) {
             if (bee.killsAllOthersWhenDie()) {
                 bees.clear();
                 throw new SwarmDeadException();
             } else {
-                bees.remove(beeIndex);
+                bees.remove(bee);
             }
         }
         return bee;

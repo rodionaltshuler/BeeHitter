@@ -5,7 +5,7 @@ import java.util.List;
 public interface SwarmContract {
 
     interface UserActionListener {
-        void hitRandomBee();
+        Bee hitRandomBee();
         void showSwarmToUser();
     }
 

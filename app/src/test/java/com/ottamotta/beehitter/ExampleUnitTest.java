@@ -1,6 +1,7 @@
 package com.ottamotta.beehitter;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 

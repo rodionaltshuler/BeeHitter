@@ -11,9 +11,9 @@ public class SwarmPresenter implements SwarmContract.UserActionListener {
     }
 
     @Override
-    public void hitRandomBee() {
+    public Bee hitRandomBee() {
+        Bee bee = swarm.getRandomBee();
         try {
-            Bee bee = swarm.getRandomBee();
             swarm.hit(bee);
             view.updateBee(bee);
             if (bee.isDead()) {
@@ -27,6 +27,7 @@ public class SwarmPresenter implements SwarmContract.UserActionListener {
             swarm = Swarm.reCreate();
             view.showBees(swarm.getAllBees());
         }
+        return bee;
     }
 
     @Override
